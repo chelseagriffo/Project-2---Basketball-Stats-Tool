@@ -15,7 +15,11 @@ def clean_data():
             }
         cleaned_players.append(clean_stats)
 
-        
+
+def balance_teams():
+    pass
+
+
 if __name__ == "__main__":
     clean_data()
 
