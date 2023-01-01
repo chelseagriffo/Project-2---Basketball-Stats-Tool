@@ -2,8 +2,12 @@ from constants import TEAMS, PLAYERS
 
 
 def clean_data():
+    cleaned_players = []
+    for player_stats in PLAYERS:
+        clean_stats = {
+            
+        }
 
-# test
 if __name__ == "__main__":
     pass
 
