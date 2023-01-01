@@ -12,8 +12,10 @@ def clean_data():
             else:
                 clean_stats['experience'] = False
             clean_stats['height_num'] = int(player_stats['height'].split(' ')[0])
-        }
+            }
+        cleaned_players.append(clean_stats)
 
+        
 if __name__ == "__main__":
-    pass
+    clean_data()
 
