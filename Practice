@@ -1,0 +1,8 @@
+from constants import TEAMS, PLAYERS
+
+
+def balance_teams():
+    roster = []
+    for team in TEAMS:
+        for clean_stats in cleaned_players: 
+            roster.append(clean_stats['name'])
