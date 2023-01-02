@@ -2,34 +2,39 @@ from constants import TEAMS, PLAYERS
 
 
 def clean_data():
-    cleaned_players = []
-    for player_stats in PLAYERS:
-        if player_stats['experience'] == "YES":
+    clean_players = []
+    for player in PLAYERS:
+        if player['experience'] == "YES":
             experience_bool = True
         else:
             experience_bool = False
-        height_int = int(player_stats['height'].split(' ')[0])
-        clean_stats = {
-            'name':player_stats['name'],
-            'guardians':player_stats['guardians'],
+        height_int = int(player['height'].split(' ')[0])
+        clean_player = {
+            'name':player['name'],
+            'guardians':player['guardians'],
             'experience':experience_bool,
             'height':height_int
             }
-        cleaned_players.append(clean_stats)
-    return cleaned_players
+        clean_players.append(clean_player)
+    return clean_players
 
 
-def balance_teams():
-    panthers_roster = []
-    bandits_roster = []
-    warriors_roster = []
-    num_players_roster = len(PLAYERS) / len(TEAMS)
-    for team in TEAMS:
-        for clean_stats in cleaned_players: 
-            roster.append(clean_stats['name'])
+def balance_teams(clean_players):
+    panthers = []
+    bandits = []
+    warriors = []
+    teams = [panthers, bandits, warriors]
+    while len(clean_players) >= 1: 
+        for team in teams:
+            try:
+                team.append(clean_players.pop(0))
+            except IndexError:
+                break
+    return teams
+    
+
 
 
 if __name__ == "__main__":
-    # print(clean_data())
-    # print(PLAYERS)
-    pass
+    clean_data()
+    balance_teams(clean_data())
