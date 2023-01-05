@@ -72,26 +72,29 @@ if __name__ == "__main__":
             print("Please enter 'A' or 'B'")
             continue
 
-
+    # Used https://flexiple.com/python/python-print-list/ to learn how to print out a comma separated list
     while True:
         team_choice = input('\n\nFor which team would you like to display stats? Choose a letter: ').capitalize()
         if team_choice == 'A': 
-            total_players = len(balance_teams(clean_data)[0])
+            panthers = balance_teams(clean_data())[0]
+            total_players = len(panthers)
+            panther_roster = []
+            for clean_player in panthers: 
+                panther_roster.append(clean_player['name'])
             print(f''' 
-                Team: Panthers Stats
-                ---------------------
-                Total players: {total_players})
+Team: Panthers Stats
+---------------------
+Total players: {total_players}
 
-                Panthers Roster:
-            '''
-            
-            
-            )
+Panthers Roster:  
+    ''') 
+            print(*panther_roster, sep=", ")
             break
-        elif team_choice == 'B':
-            print('\nThanks for using the Basketball Stats Tool!')  
-            break
-        elif team_choice == 'C':
-        else:
-            print("Please enter 'A', 'B', or 'C'")
-            continue
+        # elif team_choice == 'B':
+        #     print('\nThanks for using the Basketball Stats Tool!')  
+        #     break
+        # elif team_choice == 'C':
+        # else:
+        #     print("Please enter 'A', 'B', or 'C'")
+        #     continue
+    print()
