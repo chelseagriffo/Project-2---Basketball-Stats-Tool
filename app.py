@@ -1,24 +1,6 @@
 from constants import TEAMS, PLAYERS
 import sys
 
-print(f'BASKETBALL STATS TOOL \n\n')
-print('---MENU--- \n')
-print('What would you like to do? \nA) Display Team Stats \nB) Quit')
-
-#This while loop prompts the user to choose to use the tool to view team stats or quit the tool
-while True:
-    choice_use_quit = input('\n\nEnter your choice: ').capitalize()
-    print(choice_use_quit)
-    if choice_use_quit == 'A': 
-        print('\n\nA) Panthers \nB) Bandits \nC) Warriors')
-        break
-    elif choice_use_quit == 'B':
-        print('\nThanks for using the Basketball Stats Tool!')  
-        break
-    else:
-        print("Please enter 'A' or 'B'")
-        continue
-
 
 def clean_data():
     clean_players = []
@@ -69,8 +51,47 @@ def balance_teams(clean_players):
     return teams
     
 
-
-
 if __name__ == "__main__":
     clean_data()
-    (balance_teams(clean_data()))
+    balance_teams(clean_data())
+
+    print(f'BASKETBALL STATS TOOL \n\n')
+    print('---MENU--- \n')
+    print('What would you like to do? \nA) Display Team Stats \nB) Quit')
+
+    #This while loop prompts the user to choose to use the tool to view team stats or quit the tool
+    while True:
+        choice_use_quit = input('\n\nEnter your choice: ').capitalize()
+        if choice_use_quit == 'A': 
+            print('\n\nA) Panthers \nB) Bandits \nC) Warriors')
+            break
+        elif choice_use_quit == 'B':
+            print('\nThanks for using the Basketball Stats Tool!')  
+            break
+        else:
+            print("Please enter 'A' or 'B'")
+            continue
+
+
+    while True:
+        team_choice = input('\n\nFor which team would you like to display stats? Choose a letter: ').capitalize()
+        if team_choice == 'A': 
+            total_players = len(balance_teams(clean_data)[0])
+            print(f''' 
+                Team: Panthers Stats
+                ---------------------
+                Total players: {total_players})
+
+                Panthers Roster:
+            '''
+            
+            
+            )
+            break
+        elif team_choice == 'B':
+            print('\nThanks for using the Basketball Stats Tool!')  
+            break
+        elif team_choice == 'C':
+        else:
+            print("Please enter 'A', 'B', or 'C'")
+            continue
