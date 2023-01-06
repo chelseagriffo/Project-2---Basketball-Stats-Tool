@@ -12,12 +12,13 @@ def clean_data():
         height_int = int(player['height'].split(' ')[0])
         clean_player = {
             'name':player['name'],
-            'guardians':player['guardians'],
+            'guardians':player['guardians'].split(" and "),
             'experience':experience_bool,
             'height':height_int
             }
         clean_players.append(clean_player)
     return clean_players
+
 
 
 #The balance_teams function balances the teams so that each team has the same number of experienced vs. inexperienced players
@@ -67,20 +68,19 @@ if __name__ == "__main__":
             break
         elif choice_use_quit == 'B':
             print('\nThanks for using the Basketball Stats Tool!')  
-            break
+            sys.exit()
         else:
             print("Please enter 'A' or 'B'")
             continue
 
-    # Used https://flexiple.com/python/python-print-list/ to learn how to print out a comma separated list
     while True:
         team_choice = input('\n\nFor which team would you like to display stats? Choose a letter: ').capitalize()
         if team_choice == 'A': 
             panthers = balance_teams(clean_data())[0]
             total_players = len(panthers)
-            panther_roster = []
+            panthers_roster = []
             for clean_player in panthers: 
-                panther_roster.append(clean_player['name'])
+                panthers_roster.append(clean_player['name'])
             print(f''' 
 Team: Panthers Stats
 ---------------------
@@ -88,13 +88,40 @@ Total players: {total_players}
 
 Panthers Roster:  
     ''') 
-            print(*panther_roster, sep=", ")
+# Used https://flexiple.com/python/python-print-list/ to learn how to print out a comma separated list
+            print(*panthers_roster, sep=", ") 
             break
-        # elif team_choice == 'B':
-        #     print('\nThanks for using the Basketball Stats Tool!')  
-        #     break
-        # elif team_choice == 'C':
-        # else:
-        #     print("Please enter 'A', 'B', or 'C'")
-        #     continue
-    print()
+        elif team_choice == 'B':
+            bandits = balance_teams(clean_data())[1]
+            total_players = len(bandits)
+            bandits_roster = []
+            for clean_player in bandits: 
+                bandits_roster.append(clean_player['name'])
+            print(f''' 
+Team: Bandits Stats
+---------------------
+Total players: {total_players}
+
+Bandits Roster:  
+    ''') 
+            print(*bandits_roster, sep=", ")
+            break
+        elif team_choice == 'C':
+            warriors = balance_teams(clean_data())[2]
+            total_players = len(warriors)
+            warriors_roster = []
+            for clean_player in warriors: 
+                warriors_roster.append(clean_player['name'])
+            print(f''' 
+Team: Warriors Stats
+---------------------
+Total players: {total_players}
+
+Warriors Roster:  
+    ''') 
+            print(*warriors_roster, sep=", ")
+            break
+        else:
+            print("Please enter 'A', 'B', or 'C'")
+            continue
+    

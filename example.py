@@ -21,15 +21,15 @@ cards = [
     ]
 
 
-def deal_cards():
-    while len(cards) >= 1:
+def deal_cards(lst):
+    while len(lst) >= 1:
         for player in card_players:
             try:
                 player.append(cards.pop(0))
             except IndexError:
                 break
 
-deal_cards()
+deal_cards(cards)
 print(f"Mel's cards: {mel}")
 print(f"Chels' cards: {chels}")
 print(f"Max's cards: {max}")
