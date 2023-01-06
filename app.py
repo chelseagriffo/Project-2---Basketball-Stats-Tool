@@ -56,7 +56,8 @@ if __name__ == "__main__":
     clean_data()
     balance_teams(clean_data())
 
-    print(f'BASKETBALL STATS TOOL \n\n')
+print(f'BASKETBALL STATS TOOL \n\n')
+while True:
     print('---MENU--- \n')
     print('What would you like to do? \nA) Display Team Stats \nB) Quit')
 
@@ -124,4 +125,14 @@ Warriors Roster:
         else:
             print("Please enter 'A', 'B', or 'C'")
             continue
-    
+    while True:
+        return_menu_or_quit = input('\n\nWould you like to return to the main menu? Enter YES or NO: ').upper()
+        if return_menu_or_quit == 'YES': 
+            break
+        elif return_menu_or_quit == 'NO':
+            print('\nThanks for using the Basketball Stats Tool!')  
+            sys.exit()
+        else:
+            print("Please enter 'YES' or 'NO'")
+            continue
+        
