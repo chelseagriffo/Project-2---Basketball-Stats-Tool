@@ -12,7 +12,7 @@ def clean_data():
         height_int = int(player['height'].split(' ')[0])
         clean_player = {
             'name':player['name'],
-            'guardians':player['guardians'].split(" and "),
+            'guardians':", ".join(player['guardians'].split(" and ")),
             'experience':experience_bool,
             'height':height_int
             }
@@ -60,7 +60,6 @@ print(f'BASKETBALL STATS TOOL \n\n')
 while True:
     print('---MENU--- \n')
     print('What would you like to do? \nA) Display Team Stats \nB) Quit')
-
     #This while loop prompts the user to choose to use the tool to view team stats or quit the tool
     while True:
         choice_use_quit = input('\n\nEnter your choice: ').capitalize()
@@ -80,46 +79,108 @@ while True:
             panthers = balance_teams(clean_data())[0]
             total_players = len(panthers)
             panthers_roster = []
+            panthers_experienced = []
+            panthers_inexperienced = []
+            panthers_heights = []
+            panthers_parents = []
             for clean_player in panthers: 
                 panthers_roster.append(clean_player['name'])
+            for clean_player in panthers:
+                if clean_player['experience'] == True:
+                    panthers_experienced.append(clean_player['experience'])
+                elif clean_player['experience'] == False:
+                    panthers_inexperienced.append(clean_player['experience'])
+            for clean_player in panthers:
+                panthers_heights.append(clean_player['height'])
+            for clean_player in panthers:
+                panthers_parents.append(clean_player['guardians'])
             print(f''' 
 Team: Panthers Stats
 ---------------------
 Total players: {total_players}
 
-Panthers Roster:  
-    ''') 
-# Used https://flexiple.com/python/python-print-list/ to learn how to print out a comma separated list
-            print(*panthers_roster, sep=", ") 
+# of inexperience players: {len(panthers_inexperienced)}
+
+# of experienced players: {len(panthers_experienced)}
+
+Panthers average height: {sum(panthers_heights)/total_players}
+    ''')
+            print('Panthers parents:')
+            print(*panthers_parents, sep=", ")
+
+            print('\nPanthers Roster:')
+            print(*panthers_roster, sep=", ")
             break
         elif team_choice == 'B':
             bandits = balance_teams(clean_data())[1]
             total_players = len(bandits)
             bandits_roster = []
+            bandits_experienced = []
+            bandits_inexperienced = []
+            bandits_heights = []
+            bandits_parents = []
             for clean_player in bandits: 
                 bandits_roster.append(clean_player['name'])
+            for clean_player in bandits:
+                if clean_player['experience'] == True:
+                    bandits_experienced.append(clean_player['experience'])
+                elif clean_player['experience'] == False:
+                    bandits_inexperienced.append(clean_player['experience'])
+            for clean_player in bandits:
+                bandits_heights.append(clean_player['height'])
+            for clean_player in bandits:
+                bandits_parents.append(clean_player['guardians'])
             print(f''' 
 Team: Bandits Stats
 ---------------------
 Total players: {total_players}
 
-Bandits Roster:  
-    ''') 
+# of inexperience players: {len(bandits_inexperienced)}
+
+# of experienced players: {len(bandits_experienced)}
+
+Bandits average height: {sum(bandits_heights)/total_players}
+    ''')
+            print('Bandits parents:')
+            print(*bandits_parents, sep=", ")
+
+            print('\nBandits Roster:')
             print(*bandits_roster, sep=", ")
             break
         elif team_choice == 'C':
             warriors = balance_teams(clean_data())[2]
             total_players = len(warriors)
             warriors_roster = []
+            warriors_experienced = []
+            warriors_inexperienced = []
+            warriors_heights = []
+            warriors_parents = []
             for clean_player in warriors: 
                 warriors_roster.append(clean_player['name'])
+            for clean_player in warriors:
+                if clean_player['experience'] == True:
+                    warriors_experienced.append(clean_player['experience'])
+                elif clean_player['experience'] == False:
+                    warriors_inexperienced.append(clean_player['experience'])
+            for clean_player in warriors:
+                warriors_heights.append(clean_player['height'])
+            for clean_player in warriors:
+                warriors_parents.append(clean_player['guardians'])
             print(f''' 
 Team: Warriors Stats
 ---------------------
 Total players: {total_players}
 
-Warriors Roster:  
-    ''') 
+# of inexperience players: {len(warriors_inexperienced)}
+
+# of experienced players: {len(warriors_experienced)}
+
+Warriors average height: {sum(warriors_heights)/total_players}
+    ''')
+            print('Warriors parents:')
+            print(*warriors_parents, sep=", ")
+
+            print('\nWarriors Roster:')
             print(*warriors_roster, sep=", ")
             break
         else:
